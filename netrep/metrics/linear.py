@@ -95,6 +95,14 @@ class LinearMetric(BaseEstimator):
         self.Wx_ = Zx @ U
         self.Wy_ = Zy @ Vt.T
 
+        ## Extract partial whitening matrices.
+        self.Zx_ = Zx
+        self.Zy_ = Zy
+
+        ## Extract rotation matrices after partial whitening.
+        self.Rx_ = U
+        self.Ry_ = Vt.T
+
         return self
 
     def fit(self, X: npt.NDArray, Y: npt.NDArray) -> LinearMetric:
